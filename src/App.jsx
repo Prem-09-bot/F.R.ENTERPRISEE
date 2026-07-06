@@ -75,7 +75,7 @@ function App() {
         />
 
         <Route
-          path="/admin/faq"
+          path="/admin/FAQ"
           element={
             <ProtectedRoute>
               <FAQ />

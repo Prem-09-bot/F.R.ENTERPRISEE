@@ -61,7 +61,7 @@ const logout = () => {
     {
       name: "FAQ",
       icon: <FaQuestionCircle />,
-      path: "/admin/faq",
+      path: "/admin/FAQ",
     },
     {
   name: "Settings",
