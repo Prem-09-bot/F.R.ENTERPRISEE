@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "../config";
 import { motion } from "framer-motion";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/projects")
-      .then((res) => setProjects(res.data))
-      .catch((err) => console.error(err));
+    aaxios
+  .get(`${API_URL}/projects`)
+  .then((res) => setProjects(res.data))
+  .catch((err) => console.error(err));
   }, []);
 
 

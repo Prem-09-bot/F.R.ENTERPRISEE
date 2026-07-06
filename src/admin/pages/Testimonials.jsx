@@ -29,7 +29,7 @@ export default function Testimonials() {
     try {
       if (selectedTestimonial) {
         await axios.put(
-          `http://localhost:5000/api/testimonials/${selectedTestimonial._id}`,
+          `${API_URL}/testimonials/${selectedTestimonial._id}`,
           testimonialData,
           {
             headers: {
@@ -43,7 +43,7 @@ export default function Testimonials() {
       } else {
 
         await axios.post(
-          "http://localhost:5000/api/testimonials",
+          `${API_URL}/testimonials`,
           testimonialData,
           {
             headers: {
@@ -76,7 +76,7 @@ export default function Testimonials() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/testimonials/${id}`
+        `${API_URL}/testimonials/${id}`
       );
 
       alert("Deleted Successfully");

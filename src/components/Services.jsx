@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { API_URL } from "../config";
 
 import {
   FaBuilding,
@@ -19,9 +20,9 @@ export default function Services() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/services")
-      .then((res) => setServices(res.data))
-      .catch((err) => console.error(err));
+  .get(`${API_URL}/services`)
+  .then((res) => setServices(res.data))
+  .catch((err) => console.error(err));
   }, []);
 
   return (

@@ -84,7 +84,7 @@ export default function Settings() {
       }
 
       await axios.put(
-        "http://localhost:5000/api/settings",
+        `${API_URL}/settings`,
         data,
         {
           headers: {

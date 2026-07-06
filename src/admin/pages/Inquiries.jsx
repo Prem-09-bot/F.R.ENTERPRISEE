@@ -39,10 +39,10 @@ const [statusFilter, setStatusFilter] = useState("All");
 
   const updateStatus = async (id, status) => {
   try {
-    await axios.put(
-      `http://localhost:5000/api/inquiry/${id}/status`,
-      { status }
-    );
+   await axios.put(
+  `${API_URL}/inquiry/${id}/status`,
+  { status }
+);
     setInquiries((prev) =>
       prev.map((item) =>
         item._id === id

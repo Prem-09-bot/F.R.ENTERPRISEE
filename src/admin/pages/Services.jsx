@@ -35,7 +35,7 @@ export default function Services() {
       if (selectedService) {
 
         await axios.put(
-          `http://localhost:5000/api/services/${selectedService._id}`,
+          `${API_URL}/services/${selectedService._id}`,
           serviceData,
           {
             headers: {
@@ -49,7 +49,7 @@ export default function Services() {
       } else {
 
         await axios.post(
-          "http://localhost:5000/api/services",
+  `${API_URL}/services`,
           serviceData,
           {
             headers: {
@@ -82,8 +82,8 @@ export default function Services() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/services/${id}`
-      );
+  `${API_URL}/services/${id}`
+);
 
       fetchServices();
 

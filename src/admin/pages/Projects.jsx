@@ -30,7 +30,7 @@ export default function Projects() {
     try {
       if (selectedProject) {
         await axios.put(
-          `http://localhost:5000/api/projects/${selectedProject._id}`,
+  `${API_URL}/projects/${selectedProject._id}`,
           projectData,
           {
             headers: {
@@ -42,7 +42,7 @@ export default function Projects() {
         alert("Project Updated Successfully");
       } else {
         await axios.post(
-          "http://localhost:5000/api/projects",
+  `${API_URL}/projects`,
           projectData,
           {
             headers: {
@@ -72,9 +72,9 @@ export default function Projects() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(
-        `http://localhost:5000/api/projects/${id}`
-      );
+     await axios.delete(
+  `${API_URL}/projects/${id}`
+);
 
       alert("Project Deleted");
 
@@ -180,9 +180,9 @@ export default function Projects() {
                   <td className="p-4">
                     {project.image ? (
                       <img
-                        src={
+                src={
   project.image
-    ? `http://localhost:5000/${project.image}`
+    ? `${API_URL.replace("/api", "")}/${project.image}`
     : "/placeholder.jpg"
 }
                         alt={project.title}

@@ -33,7 +33,7 @@ export default function Team() {
       if (selectedMember) {
 
         await axios.put(
-          `http://localhost:5000/api/team/${selectedMember._id}`,
+          `${API_URL}/team/${selectedMember._id}`,
           memberData,
           {
             headers: {
@@ -46,9 +46,9 @@ export default function Team() {
 
       } else {
 
-        await axios.post(
-          "http://localhost:5000/api/team",
-          memberData,
+       await axios.post(
+  `${API_URL}/team`,
+  memberData,
           {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -83,8 +83,8 @@ export default function Team() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/team/${id}`
-      );
+  `${API_URL}/team/${id}`
+);
 
       fetchMembers();
 
