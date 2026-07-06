@@ -180,7 +180,7 @@ export default function Footer() {
           </p>
 
           <p className="text-slate-500 text-sm">
-            Designed & Developed by Jeet
+            
           </p>
 
         </div>
