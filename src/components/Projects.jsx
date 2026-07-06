@@ -7,7 +7,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    aaxios
+    axios
   .get(`${API_URL}/projects`)
   .then((res) => setProjects(res.data))
   .catch((err) => console.error(err));
