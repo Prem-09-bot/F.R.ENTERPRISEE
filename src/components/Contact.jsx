@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { API_URL } from "../config";
+import { toast } from "react-hot-toast";
 import {
   FaPhoneAlt,
   FaEnvelope,
