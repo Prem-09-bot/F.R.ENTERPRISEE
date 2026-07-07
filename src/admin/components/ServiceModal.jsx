@@ -172,7 +172,7 @@ export default function ServiceModal({
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl disabled:bg-gray-400"
+            className="w-full bg-blue-800 hover:bg-blue-900 text-white py-4 rounded-xl disabled:bg-gray-400"
           >
             {loading ? "Saving..." : "Save Service"}
           </button>

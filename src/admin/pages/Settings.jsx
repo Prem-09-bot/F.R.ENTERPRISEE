@@ -231,7 +231,7 @@ export default function Settings() {
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl"
+          className="bg-blue-800 hover:bg-blue-900 text-white px-8 py-4 rounded-xl"
         >
           {loading ? "Saving..." : "Save Settings"}
         </button>

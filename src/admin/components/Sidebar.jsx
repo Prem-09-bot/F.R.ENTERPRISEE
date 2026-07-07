@@ -117,7 +117,7 @@ const logout = () => {
                 gap-4
                 px-6
                 py-4
-                hover:bg-blue-600
+                hover:bg-blue-800
                 transition
               "
             >

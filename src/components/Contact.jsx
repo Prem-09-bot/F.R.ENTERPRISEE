@@ -32,7 +32,7 @@ const handleSubmit = async (e) => {
       formData
     );
 
-    alert(response.data.message);
+    toast.success("Inquiry submitted successfully!");
 
     setFormData({
       name: "",
@@ -46,7 +46,7 @@ const handleSubmit = async (e) => {
   } catch (error) {
     console.error(error);
 
-    alert("Failed to send inquiry.");
+    toast.error("Failed to send inquiry.");
   }
 
   setLoading(false);

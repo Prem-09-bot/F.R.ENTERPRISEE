@@ -39,7 +39,7 @@ export default function InquiryModal({ inquiry, onClose, updateStatus, }) {
 
           <div className="flex items-center gap-4 mb-8">
 
-            <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl">
+            <div className="w-16 h-16 rounded-full bg-blue-800 text-white flex items-center justify-center text-2xl">
               <FaUser />
             </div>
 
@@ -179,7 +179,7 @@ export default function InquiryModal({ inquiry, onClose, updateStatus, }) {
 
             <a
               href={`tel:${inquiry.phone}`}
-              className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-4 text-center transition"
+              className="bg-blue-800 hover:bg-blue-900 text-white rounded-xl py-4 text-center transition"
             >
               <FaPhoneAlt className="mx-auto mb-2" />
               Call

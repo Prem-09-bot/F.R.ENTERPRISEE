@@ -56,7 +56,7 @@ export default function Dashboard() {
           title="Total Inquiries"
           value={stats.totalInquiries}
           icon={<FaEnvelope size={28} />}
-          color="bg-blue-600"
+          color="bg-blue-800"
         />
 
         <DashboardCard

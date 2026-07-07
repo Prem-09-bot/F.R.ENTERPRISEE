@@ -117,7 +117,7 @@ export default function Services() {
             setSelectedService(null);
             setOpen(true);
           }}
-          className="bg-blue-600 text-white px-5 py-3 rounded-xl"
+          className="bg-blue-800 text-white px-5 py-3 rounded-xl"
         >
           + Add Service
         </button>

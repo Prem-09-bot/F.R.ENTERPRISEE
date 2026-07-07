@@ -103,7 +103,7 @@ export default function Projects() {
             setSelectedProject(null);
             setOpen(true);
           }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl"
+          className="bg-blue-800 hover:bg-blue-900 text-white px-5 py-3 rounded-xl"
         >
           + Add Project
         </button>

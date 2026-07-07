@@ -85,7 +85,7 @@ export default function Projects() {
                   px-3
                   py-1
                   rounded-full
-                  bg-blue-600
+                  bg-blue-800
                   text-white
                   text-sm
                 ">

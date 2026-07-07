@@ -36,7 +36,7 @@ export default function Footer() {
                 className="
                   w-10 h-10
                   rounded-full
-                  bg-blue-600
+                  bg-blue-800
                   flex items-center justify-center
                 "
               >
@@ -48,7 +48,7 @@ export default function Footer() {
                 className="
                   w-10 h-10
                   rounded-full
-                  bg-blue-600
+                  bg-blue-800
                   flex items-center justify-center
                 "
               >
@@ -60,7 +60,7 @@ export default function Footer() {
                 className="
                   w-10 h-10
                   rounded-full
-                  bg-blue-600
+                  bg-blue-800
                   flex items-center justify-center
                 "
               >

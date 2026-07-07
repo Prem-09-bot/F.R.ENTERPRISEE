@@ -166,7 +166,7 @@ const [statusFilter, setStatusFilter] = useState("All");
 
                       <button
                         onClick={() => setSelectedInquiry(item)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg"
+                        className="bg-blue-800 hover:bg-blue-900 text-white p-2 rounded-lg"
                         title="View Details"
                       >
                         <FaEye />

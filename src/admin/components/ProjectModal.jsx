@@ -214,7 +214,7 @@ export default function ProjectModal({
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 disabled:bg-gray-400"
+            className="w-full bg-blue-800 text-white py-4 rounded-xl hover:bg-blue-700 disabled:bg-gray-400"
           >
             {loading ? "Saving..." : "Save Project"}
           </button>
