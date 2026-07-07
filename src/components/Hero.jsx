@@ -9,7 +9,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden w-full h-full object-cover"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(8,47,73,.85), rgba(37,99,235,.85)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600')",
+          "linear-gradient(rgba(9, 70, 112, 0.85), rgba(8, 49, 138, 0.85)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

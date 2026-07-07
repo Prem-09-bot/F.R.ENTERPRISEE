@@ -33,7 +33,7 @@ export default function Stats() {
   <CountUp
     start={0}
     end={item.number}
-    duration={4.5}
+    duration={10.5}
   />
   +
 </h3>
