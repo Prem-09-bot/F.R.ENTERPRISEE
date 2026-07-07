@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -130,7 +131,7 @@ const handleSubmit = async (e) => {
                   WareHouse
                 </h4>
                 <p className="text-gray-600">
-                   147|J, West Chowbaga, Tiljala, Kolkata, West Bengal – 700039
+                   147|J, West Chowbaga, Tiljala, Kolkata, West Bengal – 700105
                 </p>
               </div>
             </div>
