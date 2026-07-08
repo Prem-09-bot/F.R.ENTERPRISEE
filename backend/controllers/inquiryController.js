@@ -1,12 +1,5 @@
 const Inquiry = require("../models/Inquiry");
-const Brevo = require("@getbrevo/brevo");
-
-const apiInstance = new Brevo.TransactionalEmailsApi();
-
-apiInstance.setApiKey(
-  Brevo.TransactionalEmailsApiApiKeys.apiKey,
-  process.env.BREVO_API_KEY
-);
+const axios = require("axios");
 
 const sendInquiry = async (req, res) => {
   try {
@@ -20,7 +13,6 @@ const sendInquiry = async (req, res) => {
       message,
     } = req.body;
 
-    // Save to MongoDB
     const inquiry = await Inquiry.create({
       name,
       phone,
@@ -31,63 +23,70 @@ const sendInquiry = async (req, res) => {
       message,
     });
 
-    // Respond immediately
     res.status(201).json({
       success: true,
       message: "Inquiry submitted successfully!",
       inquiry,
     });
 
-    const emailData = new Brevo.SendSmtpEmail();
+    axios
+      .post(
+        "https://api.brevo.com/v3/smtp/email",
+        {
+          sender: {
+            name: "F.R. Enterprise",
+            email: "frenterprise.co@gmail.com",
+          },
 
-    emailData.sender = {
-      name: "F.R. Enterprise",
-      email: "frenterprise.co@gmail.com",
-    };
+          to: [
+            {
+              email: "frenterprise.co@gmail.com",
+              name: "F.R. Enterprise",
+            },
+          ],
 
-    emailData.to = [
-      {
-        email: "frenterprise.co@gmail.com",
-        name: "F.R. Enterprise",
-      },
-    ];
+          subject: "📩 New Inquiry - F.R. Enterprise",
 
-    emailData.subject = "📩 New Inquiry - F.R. Enterprise";
+          htmlContent: `
+            <div style="font-family:Arial,sans-serif;padding:20px">
+              <h2 style="color:#0F4C81;">New Website Inquiry</h2>
+              <hr>
 
-    emailData.htmlContent = `
-      <div style="font-family:Arial;padding:20px">
-        <h2 style="color:#0F4C81">
-          New Website Inquiry
-        </h2>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Phone:</strong> ${phone}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Service:</strong> ${service}</p>
+              <p><strong>Project Type:</strong> ${projectType}</p>
+              <p><strong>Location:</strong> ${location}</p>
 
-        <hr>
+              <h3>Project Details</h3>
 
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Project Type:</strong> ${projectType}</p>
-        <p><strong>Location:</strong> ${location}</p>
+              <p>${message}</p>
 
-        <h3>Project Details</h3>
+              <hr>
 
-        <p>${message}</p>
-
-        <hr>
-
-        <small>
-          Submitted from FR Enterprise Website
-        </small>
-      </div>
-    `;
-
-    apiInstance
-      .sendTransacEmail(emailData)
+              <small>
+                Submitted from F.R. Enterprise Website
+              </small>
+            </div>
+          `,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            "api-key": process.env.BREVO_API_KEY,
+            "content-type": "application/json",
+          },
+        }
+      )
       .then(() => {
         console.log("✅ Email sent successfully");
       })
       .catch((err) => {
-        console.error("❌ Email Error:", err);
+        console.error(
+          "❌ Brevo Email Error:",
+          err.response?.data || err.message
+        );
       });
 
   } catch (err) {
