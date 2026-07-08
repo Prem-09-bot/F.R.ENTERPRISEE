@@ -7,14 +7,14 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden w-full h-full object-cover"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(9, 70, 112, 0.85), rgba(8, 49, 138, 0.85)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+     style={{
+  backgroundImage:
+    "linear-gradient(rgba(7,25,61,.88), rgba(12,43,93,.82)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+}}
     >
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-15">
     <div
       className="w-full h-full"
       style={{
@@ -33,7 +33,7 @@ export default function Hero() {
           className="text-white"
         >
 
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-blue-500/20">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#143F7D]/70 backdrop-blur-md border border-white/20 shadow-lg shadow-[#0B2D63]/40">
           <span className="h-2 w-2 rounded-full bg-green-400"></span>
           <span className="text-sm">
              30+ Years of Industry Excellence
@@ -42,24 +42,24 @@ export default function Hero() {
 
           <h1 className="mt-6 text-6xl md:text-7xl font-bold leading-tight">
              Building Iconic
-         <span className="block text-blue-300">
+         <span className="block text-[#76AFFF]">
              Facades &
          </span>
              Tomorrow's Industry
           </h1>
           
-          <p className="mt-6 text-lg md:text-xl text-blue-100 max-w-xl">
+          <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-xl">
             From towering structural glazing to precision ACP cladding — F.R. Enterprise has delivered 8000+ premium installations engineered to last.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#contact"
-             className="bg-white text-blue-900 px-8 py-4 rounded-xl font-semibold shadow-xl hover:-translate-y-1 transition-all duration-300">
+             className="bg-[#E53935] text-white hover:bg-[#C62828] px-8 py-4 rounded-xl font-semibold shadow-xl hover:-translate-y-1 transition-all duration-300">
               Get Quote
             </a>
 
             <a href="#projects"
-             className="border border-white px-8 py-4 rounded-xl backdrop-blur-md hover:bg-white hover:text-blue-900 transition-all duration-300">
+             className="border border-white px-8 py-4 rounded-xl backdrop-blur-md hover:bg-white hover:text-[#0B2D63] transition-all duration-300">
               View Projects
             </a>
           </div>
@@ -67,22 +67,22 @@ export default function Hero() {
        
           <div className="grid sm:grid-cols-2 gap-4 mt-10">
             <div className="flex items-center gap-3">
-              <FaCheckCircle />
+              <FaCheckCircle className="text-[#76AFFF]" />
               <span>8000+ Projects Delivered</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <FaCheckCircle />
+             <FaCheckCircle className="text-[#76AFFF]" />
               <span>100+ Happy Clients</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <FaCheckCircle />
+              <FaCheckCircle className="text-[#76AFFF]" />
               <span>30+ Years Experience</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <FaCheckCircle />
+             <FaCheckCircle className="text-[#76AFFF]" />
               <span>Pan India Service</span>
             </div>
           </div>
