@@ -1,12 +1,13 @@
 const Inquiry = require("../models/Inquiry");
 const nodemailer = require("nodemailer");
 
-// Create transporter once (better performance)
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp-relay.brevo.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.BREVO_USER,
+    pass: process.env.BREVO_PASS,
   },
 });
 
@@ -40,11 +41,10 @@ const sendInquiry = async (req, res) => {
       inquiry,
     });
 
-    // Send email in background
     transporter
-      .sendMail({
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
+  .sendMail({
+    from: `"F.R. Enterprise" <frenterprise.co@gmail.com>`,
+    to: "frenterprise.co@gmail.com",
         subject: "📩 New Inquiry - F.R. Enterprise",
 
         html: `
