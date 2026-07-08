@@ -1,15 +1,12 @@
 const Inquiry = require("../models/Inquiry");
-const nodemailer = require("nodemailer");
+const Brevo = require("@getbrevo/brevo");
 
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.BREVO_USER,
-    pass: process.env.BREVO_PASS,
-  },
-});
+const apiInstance = new Brevo.TransactionalEmailsApi();
+
+apiInstance.setApiKey(
+  Brevo.TransactionalEmailsApiApiKeys.apiKey,
+  process.env.BREVO_API_KEY
+);
 
 const sendInquiry = async (req, res) => {
   try {
@@ -23,7 +20,7 @@ const sendInquiry = async (req, res) => {
       message,
     } = req.body;
 
-    // Save inquiry to MongoDB
+    // Save to MongoDB
     const inquiry = await Inquiry.create({
       name,
       phone,
@@ -34,57 +31,71 @@ const sendInquiry = async (req, res) => {
       message,
     });
 
-    // Send response immediately
+    // Respond immediately
     res.status(201).json({
       success: true,
       message: "Inquiry submitted successfully!",
       inquiry,
     });
 
-    transporter
-  .sendMail({
-    from: `"F.R. Enterprise" <frenterprise.co@gmail.com>`,
-    to: "frenterprise.co@gmail.com",
-        subject: "📩 New Inquiry - F.R. Enterprise",
+    const emailData = new Brevo.SendSmtpEmail();
 
-        html: `
-        <div style="font-family:Arial,sans-serif;padding:20px">
-          <h2 style="color:#0f4c81;">New Website Inquiry</h2>
-          <hr>
+    emailData.sender = {
+      name: "F.R. Enterprise",
+      email: "frenterprise.co@gmail.com",
+    };
 
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Service:</strong> ${service}</p>
-          <p><strong>Project Type:</strong> ${projectType}</p>
-          <p><strong>Location:</strong> ${location}</p>
+    emailData.to = [
+      {
+        email: "frenterprise.co@gmail.com",
+        name: "F.R. Enterprise",
+      },
+    ];
 
-          <h3>Project Details</h3>
+    emailData.subject = "📩 New Inquiry - F.R. Enterprise";
 
-          <p>${message}</p>
+    emailData.htmlContent = `
+      <div style="font-family:Arial;padding:20px">
+        <h2 style="color:#0F4C81">
+          New Website Inquiry
+        </h2>
 
-          <hr>
+        <hr>
 
-          <small>
-            This inquiry was submitted through the
-            F.R. Enterprise website.
-          </small>
-        </div>
-        `,
-      })
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Project Type:</strong> ${projectType}</p>
+        <p><strong>Location:</strong> ${location}</p>
+
+        <h3>Project Details</h3>
+
+        <p>${message}</p>
+
+        <hr>
+
+        <small>
+          Submitted from FR Enterprise Website
+        </small>
+      </div>
+    `;
+
+    apiInstance
+      .sendTransacEmail(emailData)
       .then(() => {
-        console.log("✅ Inquiry email sent successfully.");
+        console.log("✅ Email sent successfully");
       })
       .catch((err) => {
-        console.error("❌ Email sending failed:", err);
+        console.error("❌ Email Error:", err);
       });
 
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
 
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: err.message,
     });
   }
 };
@@ -96,9 +107,9 @@ const getInquiries = async (req, res) => {
     });
 
     res.json(inquiries);
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({
-      message: error.message,
+      message: err.message,
     });
   }
 };
@@ -118,6 +129,7 @@ const updateStatus = async (req, res) => {
     await inquiry.save();
 
     res.json(inquiry);
+
   } catch (err) {
     res.status(500).json({
       message: err.message,
