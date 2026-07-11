@@ -43,12 +43,16 @@ export default function Projects() {
             <motion.div
               key={index}
               whileHover={{ y: -10 }}
+              whileTap={{ scale: 0.97 }}
               className="
                 group
                 overflow-hidden
                 rounded-3xl
                 relative
                 h-[400px]
+                transition-all
+                duration-300
+                md:hover:-translate-y-2
               "
             >
 
@@ -59,8 +63,8 @@ export default function Projects() {
                   w-full
                   h-full
                   object-cover
-                  group-hover:scale-110
-                  transition-all
+                  md:group-hover:scale-110
+                  transition-transform
                   duration-700
                 "
               />

@@ -35,7 +35,7 @@ export default function Team() {
   return (
     <section
       id="team"
-      className="py-28 bg-gradient-to-b from-white to slate-50"
+      className="py-20 md:py-28 bg-gradient-to-b from-white to slate-50"
     >
       <div className="max-w-7xl mx-auto px-6">
 
@@ -59,13 +59,14 @@ export default function Team() {
 
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-10">
 
           {team.map((member, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileTap={{ scale: 0.97 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className="text-center group"
@@ -79,13 +80,18 @@ export default function Team() {
                   className="
                     w-64
                     h-64
+                    sm:w-56
+                    sm:h-56
+                    md:w-64
+                    md:h-64
                     object-cover
                     rounded-full
-                    border-8
+                    border-4
+                    md:border-8
                     border-white
                     shadow-xl
-                    group-hover:scale-105
-                    transition-all
+                    md:group-hover:scale-105
+                    transition-transform
                     duration-300
                   "
                 />

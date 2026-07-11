@@ -141,7 +141,7 @@ export default function Footer() {
               <div className="flex gap-3">
                 <FaEnvelope className="mt-1 text-blue-500" />
                 <span className="text-slate-400">
-                 f.r.enterprisee@gmail.com
+                 frenterprise.co@gmail.com
                 </span>
               </div>
 

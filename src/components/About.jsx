@@ -113,22 +113,6 @@ mb-4
 
             </div>
 
-            <button
-              className="
-              mt-10
-              bg-blue-700
-              text-white
-              px-8
-              py-4
-              rounded-xl
-              shadow-lg
-              hover:-translate-y-1
-              transition
-              "
-            >
-              Learn More
-            </button>
-
           </motion.div>
 
         </div>
